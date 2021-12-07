@@ -4,5 +4,6 @@
 int main(){
 	system("gcc project.c -o proj");
   system("gcc fast.c -o fast");
+	system("gcc timerun.c -o timerun");
 	return 0;
 }

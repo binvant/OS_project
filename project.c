@@ -19,12 +19,15 @@ int main(int argc, char* argv[]){
 	unsigned int buffer_size = atoi(argv[3]);
 	buffer_size = ceil(buffer_size/4);
 	unsigned int result = 0;
-	int fd = open(argv[1], 0), n;
+
+	int fd = open(argv[1], O_RDWR | O_CREAT | O_APPEND), n;
 	unsigned int buffer[buffer_size];
+  int given_block = atoi(argv[4]);
 	while((n = read(fd, buffer, buffer_size*sizeof(unsigned int))) > 0){
   result ^= xorbuf(buffer, ceil(n/4));
 		block_count++;
-    if(block_count == atoi(argv[4])){
+    if(block_count == given_block){
+      printf("For a buffer size of %d the file size read is %d bytes \n", block_count,block_count*buffer_size);
       break;
     }
 	}
