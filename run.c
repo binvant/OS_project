@@ -3,9 +3,11 @@
 #include<string.h>
 
 int main(int argc, char* argv[]) {
-	char cmd[100] = "./proj";
-	strcat(cmd, " ");
-	strcat(cmd, argv[1]);
+	char cmd[100] = "proj";
+	if (argc >= 2) {
+		strcat(cmd, " ");
+		strcat(cmd, argv[1]);
+	}
 	strcat(cmd, " ");
 	strcat(cmd, argv[2]);
 	strcat(cmd, " ");
