@@ -3,7 +3,7 @@
 #include<string.h>
 
 int main(int argc, char* argv[]) {
-	if (strcmp(argv[2], "r")== 0){
+	if (strcmp(argv[2], "-r")== 0){
 		char cmd[100] = "./proj";
 		strcat(cmd, " ");
 		strcat(cmd, argv[1]);
