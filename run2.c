@@ -12,8 +12,6 @@ int returnMaxFileSize(char* fileName, int bufferSize);
 
 int main(int argc, char* argv[]) {
 		printf("The maximum blocks read are %d\n", returnMaxFileSize(argv[1],atoi(argv[2])));
-
-
 	return 0;
 }
 
@@ -57,7 +55,9 @@ int returnMaxFileSize(char* fileName, int bufferSize){
 			break;
 		}
 	}
+	if(fullFileRead!=1){
 	printf("The number of blocks read are %d in 5 seconds. \n",max_block);
 	printf("The file size read in 5 seconds is %ld bytes\n",max_block*buffer_size);
+}
 	return max_block;
 }
