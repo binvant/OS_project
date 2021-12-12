@@ -18,6 +18,7 @@ int main(int argc, char* argv[]){
 	buffer_size = ceil(buffer_size/4);
 	unsigned int result = 0;
   if(buffer_size == 0){
+
     buffer_size =1;
   }
 	int fd = open(argv[1], O_RDWR | O_CREAT | O_APPEND), n;
@@ -30,14 +31,15 @@ int main(int argc, char* argv[]){
       printf("For a block count of %d the file size read is %d bytes \n", block_count,block_count*buffer_size);
       break;
     }
+
 	}
-  printf("Block count: %d\n", block_count);
+  //printf("Block count: %d\n", block_count);
 	close(fd);
 	diff = clock() - start;
 	msec = diff * 1000 / CLOCKS_PER_SEC;
   double time = msec/1000.0;
   printf("Time taken to run is %f seconds\n", time);
-  double mb= (block_count*buffer_size)/1048576.0;
+  double mb= (block_count*buffer_size*4)/1048576.0;
 	printf("Speed in Megabytes per second is %f MiB/s \n", mb/time);
 	printf("XOR result is %08x\n", result);
 	return 0;

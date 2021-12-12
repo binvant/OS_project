@@ -34,13 +34,16 @@ int main(int argc, char* argv[]){
 			printf("The memory read in %s ms is %d bytes\n", argv[2], block_count*buffer_size);
 			break;
 		}
-		block_count++;
+    block_count++;
 	}
+  if(msec2 < c){
+    printf("Whole file was read in %d ms and block count is %d\n", c, block_count);
+  }
 	close(fd);
 	diff = clock() - start;
 	msec = diff * 1000 / CLOCKS_PER_SEC;
   double time = (msec)/1000.0;
-  double mb= (block_count*buffer_size)/1048576.0;
+  double mb= (block_count*buffer_size*4)/1048576.0;
 	printf("Speed in Megabytes per second is %f MiB/s \n", mb/time);
 	printf("XOR result is %08x\n", result);
 	return 0;

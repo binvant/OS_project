@@ -12,9 +12,14 @@ unsigned int buffer_size = atoi(argv[3]);
 unsigned int buffer[buffer_size];
 unsigned int block_count = atoi(argv[2]);
 while((n = read(fd_read, buffer, buffer_size*sizeof(unsigned int))) > 0){
-  write(fd, buffer, buffer_size);
+  break;
+  }
+
+  for (int i=0;i<block_count;i++) {
+    write(fd, buffer, buffer_size);
   }
 close(fd);
+close(fd_read);
 diff = clock() - start;
 int msec = diff * 1000 / CLOCKS_PER_SEC;
 double time = msec/1000.0;
